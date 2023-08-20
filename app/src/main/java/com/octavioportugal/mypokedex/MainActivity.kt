@@ -2,11 +2,33 @@ package com.octavioportugal.mypokedex
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.octavioportugal.mypokedex.R
+import android.os.PersistableBundle
+import android.view.Menu
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import com.octavioportugal.mypokedex.databinding.ActivityMainBinding
+import com.octavioportugal.mypokedex.features.PokemonList.view.PokedexFragment
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var navController: NavController
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
+
+//        val navHostFragment = supportFragmentManager
+//            .findFragmentById(R.id.frame_layout) as NavHostFragment
+//        navController = navHostFragment.navController
+
+        supportFragmentManager.beginTransaction().replace(R.id.frame_layout, PokedexFragment()).commit()
     }
 }
