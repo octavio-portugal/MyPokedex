@@ -16,7 +16,6 @@ import com.octavioportugal.mypokedex.features.PokemonList.view.PokedexFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,10 +23,6 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-//        val navHostFragment = supportFragmentManager
-//            .findFragmentById(R.id.frame_layout) as NavHostFragment
-//        navController = navHostFragment.navController
 
         supportFragmentManager.beginTransaction().replace(R.id.frame_layout, PokedexFragment()).commit()
     }
